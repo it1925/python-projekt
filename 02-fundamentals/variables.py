@@ -34,6 +34,16 @@ Některé objekty mohou mít explicitně přiřazené jméno, obecně označovan
 #? b) identitu objektu (jeho adresu v paměti)
 #? Ukažte to na příkladech proměnných students_count, rating, is_published a vypište výstupy do konzole
 
+print(type(students_count))
+print(type(rating))
+print(type(is_published))
+print(hex(id(students_count)))
+print(hex(id(rating)))
+print(hex(id(is_published)))
+print(id(students_count))
+print(id(students_count))
+print(id(is_published))
+
 # Numerické operátory
 # print(10 + 3)
 # print(10 - 3)
@@ -67,6 +77,14 @@ hexadecimal = 0x12c #Hexadecimal Literal
 
 '''Úkol B'''
 #? Vypište do poznámky všechny bitové operátory, které nabízí Python
+"""
+& 	a & b 	Bitwise AND
+| 	a | b 	Bitwise OR
+^ 	a ^ b 	Bitwise XOR (exclusive OR)
+~ 	~a 	Bitwise NOT
+<< 	a << n 	Bitwise left shift
+>> 	a >> n 	Bitwise right shift
+"""
 #? Do proměnné myself_binary uložte binární číslo vytvořené na základě osmi prvních znaků z vašeho jména a příjmení (souhláska = 1, samohláska 0)
 myself_binary = 0b10101101
 print(int(myself_binary))
