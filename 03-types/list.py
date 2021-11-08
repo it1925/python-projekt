@@ -9,6 +9,7 @@ https://www.youtube.com/watch?v=_uQrJ0TkZlc&list=PLDDhGQzLtPdbS987RIIT8WKwb-L_K2
 https://www.w3schools.com/python/python_lists.asp
 https://macek.sandbox.cz/texty/python-tutorial-cz/tut/node5.html
 '''
+import string
 
 '''
 Příklady různých seznamů v Pythonu:
@@ -27,7 +28,8 @@ mixed_list = ['text', False, 2020, [letters, numbers], {'name': 'Ledecká', 'sta
 # Seznamy tvořící matici
 matrix = [[0, 0], [0, 1], [1, 0], [1, 1]]
 
-print(f'\tSeznam letters: {letters}\n\tSeznam numbers: {numbers}\n\tSeznam mixed_list: {mixed_list}\n\tSeznam matrix: {matrix}\n')
+print(
+    f'\tSeznam letters: {letters}\n\tSeznam numbers: {numbers}\n\tSeznam mixed_list: {mixed_list}\n\tSeznam matrix: {matrix}\n')
 print(f'\tDatový typ proměnné mixed_list je {type(mixed_list)}\n')
 
 print('Příklady vytváření seznamů v Pythonu:\n-------------------------------------')
@@ -37,11 +39,10 @@ chars = list('Hello world')
 print(f'\tVytvoření seznamu z řetězce - chars: {chars}')
 
 # Vytvoření seznamu z rozmezí čísel
-marks = list(range(1,6))
+marks = list(range(1, 6))
 print(f'\tVytvoření seznamu z rozmezí čísel - hodnoty 1-5: {marks}')
-odds = list(range(1,10,2))
+odds = list(range(1, 10, 2))
 print(f'\tVytvoření seznamu z rozmezí čísel - lichá čísla v rozsahu 1-10: {odds}\n')
-
 
 '''
 Výpisy hodnot ze seznamů
@@ -59,7 +60,7 @@ print('\n1. Cvičení\n*********************************************************
 print(f'\tVypíše poslední 2 prvky ze seznamu numbers: {numbers[-2:]}')
 print(f'\tVypíše každý sudý prvek ze seznamu letters: {letters[1::2]}')
 print(f'\tVypíše všechny hodnoty z mixed_list kromě dvou posledních: {mixed_list[:-2]}')
-print(f"\tVypíše hodnotu prvku name ze slovníku umístěného v seznamu mixed_list: {mixed_list[-1]['name'] }")
+print(f"\tVypíše hodnotu prvku name ze slovníku umístěného v seznamu mixed_list: {mixed_list[-1]['name']}")
 print(f'\tVypíše hodnotu předposledního čísla z listu numbers umístěného v seznamu mixed_list: {mixed_list[3][1][-1]}')
 print('***********************************************************************************************\n')
 # ??? Konec 1. cvičení ???
@@ -107,7 +108,6 @@ print(f'\t6. Použitím operátoru + můžeme kombinovat 2 seznamy (tzv. concate
 # 7. Použitím operátoru * můžeme opakovat prvky seznamu
 letters += ['?'] * 5
 print(f'\t7. Použitím operátoru * můžeme opakovat prvky seznamu: {letters}\n')
-
 
 '''
 Odstraňování hodnot v seznamech
@@ -200,13 +200,14 @@ persons = [
     ('Milada', 50, 'žena'),
 ]
 
+
 # Funkce řídící způsob řazení - seznam se uspořádá podle 2. hodnoty v n-tici (tuple) - věku osoby
 def sort_item(item):
     return item[1]
 
+
 persons.sort(key=sort_item)
 print(f'\tŘazení seznamu tvořeného tuples - použití vlastní funkce, která řídí způsob řazení: {persons}')
-
 
 '''
 Lambda výrazy (funkce)
@@ -285,9 +286,20 @@ print(f'\tSbalení seznamů do proměnné values: {values}\n')
 from random import randint
 
 print(f'\n*************************************\nCvičení 2\n*************************************')
+import random
+import string
 
-
-
+list_numbers = list(range(2000))
+hundreds = list_numbers[::200]
+print(hundreds)
+hundreds = hundreds[3:-3]
+print(hundreds)
+asci = [random.choice(string.ascii_uppercase) for i in range(50)]
+print(asci)
+unique = list(set(asci))
+print(unique)
+combine = list(zip(hundreds, asci))
+print(combine)
 # ??? 3. cvičení ???
 # a) Přidejte do listu persons ještě n-tice (tuples) dalších 2 žen a 2 mužů.
 # b) Použijte seznam (list) persons a do proměnné women z něj pomocí lambda výrazu i comprehensions vyhledejte všechny ženy.
@@ -298,3 +310,19 @@ print(f'\n*************************************\nCvičení 2\n******************
 # Záznamy budou seřazeny podle věku (sestupně).
 
 print(f'\n*************************************\nCvičení 3\n*************************************')
+persons.extend(
+    [('Kareldruhy', 21, 'muž'), ('Janadruha', 22, 'žena'), ('Kareltreti', 22, 'muž'), ('Janatreti', 23, 'žena')])
+print(persons)
+women = list(item[0] for item in persons if item[2] == "žena")
+for i in range(len(women)):
+    print(women[i])
+    print("-" * len(women[i]))
+
+ipeople = list(i for i in persons if i[0].count('i') | i[0].count('I'))
+print(ipeople)
+import csv
+ipeople.sort(key=lambda x: x[1])
+for i in range(len(ipeople)):
+    ipeople[i] = list(ipeople[i])
+    ipeople[i].insert(0, i)
+    print(ipeople[i])
