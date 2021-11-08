@@ -123,16 +123,15 @@ pridejpecivo = {'pecivo4': {
 }}
 pecivo.update(pridejpecivo)
 print(pecivo)
-import pandas
+import pandas as pd
 
 
-def table(dict={}):
+def tab(dict={}):
     print('Dictionary: pecivo')
-    pandas.set_option('display.max_colums', None)
-    pandas.set_option('display.width', None)
-    pandas.set_option('display.max_colwidth', -1)
-    dictionary = pandas.DataFrame(dict).T
+    pd.set_option('display.max_columns', None)
+    pd.set_option('display.width', None)
+    dictionary = pd.DataFrame(dict).T
     print(dictionary)
 
 
-table(pecivo)
+tab(pecivo)
